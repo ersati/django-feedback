@@ -8,11 +8,13 @@ def review(request):
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
-            review = Review(
-                user_name= form.cleaned_data['user_name'], 
-                review_text = form.cleaned_data['review_text'], 
-                raiting = form.cleaned_data['raiting'])
-            review.save()
+            # create a model from form that isnt connect with the model.
+            # review = Review(
+            #     user_name= form.cleaned_data['user_name'], 
+            #     review_text = form.cleaned_data['review_text'], 
+            #     raiting = form.cleaned_data['raiting'])
+            # review.save()
+            form.save()
             print(form.cleaned_data)
             return HttpResponseRedirect("/thank-you")
     else:        
