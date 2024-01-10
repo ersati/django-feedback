@@ -67,6 +67,6 @@ class SingleReviewView(TemplateView):
     def get_context_data(self, **kwargs: Any):
         context = super().get_context_data(**kwargs)
         review_id = kwargs.get("id")
-        reviews = Review.objects.all()
+        reviews = Review.objects.get(pk=review_id)
         context["reviews"] = reviews
         return context
